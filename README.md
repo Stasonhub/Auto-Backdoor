@@ -13,7 +13,7 @@ Usage: `python abd.py $BINARY $PLACE TO UPLOAD / DOWNLOAD $PUT SCRIPT LOCATION $
 
 ##Jenkins configuration:
 
-Standord jenkins build, easiest to change jenkins user to be same as www root if on save server (on ubuntu it is www-data, edit	###NEED TO FIND CONFIG LOCATION###)
+Standord jenkins build, easiest to change jenkins user to be same as www root if on save server (on ubuntu it is www-data, guide: http://blog.manula.org/2013/03/running-jenkins-under-different-user-in.html )
 Need to edit the following in jenkins:
 
 
