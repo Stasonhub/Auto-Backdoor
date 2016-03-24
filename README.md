@@ -18,11 +18,11 @@ Need to edit the following in jenkins:
 
 
 1. Make it a pramatrised build with the following
-..1 dir
-..2 Payload_Type
-..3 port		(Note: For shell call back)
-..4 IP		(Note: For shell call back)	
-..5 binName
+⋅⋅1 dir
+⋅⋅2 Payload_Type
+⋅⋅3 port		(Note: For shell call back)
+⋅⋅4 IP		(Note: For shell call back)	
+⋅⋅5 binName
 2. Check allow simotaius builds
 3. Set allow remote triggred with a token
 4.s Build shell with following:
